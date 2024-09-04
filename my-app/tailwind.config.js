@@ -18,6 +18,9 @@ module.exports = {
 		lg: "960px",
 		xl: "1200px",
 	},
+	fontFamily: {
+		primary: "var(--font-jetbrainsMono)"
+	},
   	extend: {
   		backgroundImage: {
   			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -28,7 +31,9 @@ module.exports = {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
-  		colors: {}
+  		colors: {
+			
+		},
   	}
   },
   plugins: [require("tailwindcss-animate")],
