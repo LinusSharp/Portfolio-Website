@@ -2,7 +2,8 @@
 import { title } from "process";
 import React from "react";
 import { FaHtml5, FaCss3, FaReact, FaFigma, FaNodeJs } from "react-icons/fa";
-import { SiTailwindcssm, SiNextdotjs } from "react-icons/si";
+import { SiTailwindcss, SiNextdotjs } from "react-icons/si";
+
 import {
   Tabs,
   TabsContent,
@@ -142,7 +143,7 @@ const skills = {
       name: "next.js",
     },
     {
-      icon: <SiTailwindcssm />,
+      icon: <SiTailwindcss />,
       name: "tailwind.css",
     },
   ],
@@ -252,6 +253,9 @@ const Resume = () => {
                             <TooltipTrigger>
                               <div>{skill.icon}</div>
                             </TooltipTrigger>
+                            <TooltipContent>
+                              <p>{skill.name}</p>
+                            </TooltipContent>
                           </Tooltip>
                         </TooltipProvider>
                       </li>
