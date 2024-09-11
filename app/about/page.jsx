@@ -152,7 +152,7 @@ const skills = {
 const Resume = () => {
   return (
     <motion.div
-      initial={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
