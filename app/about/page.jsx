@@ -23,19 +23,19 @@ import { ScrollArea } from "../../components/ui/scroll-area";
 const about = {
   title: "About me",
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "I’m a bilingual Computer Science student at the University of Nottingham, passionate about technology and innovation.",
   info: [
     {
       fieldName: "Name",
       fieldValue: "Linus Sharp",
     },
     {
-      fieldName: "Experience",
-      fieldValue: "3 years",
-    },
-    {
       fieldName: "Email",
       fieldValue: "linuscolesharp@gmail.com",
+    },
+    {
+      fieldName: "Experience",
+      fieldValue: "3 years",
     },
     {
       fieldName: "Nationnality",
@@ -57,7 +57,7 @@ const experience = {
   icon: "/assets/resume/badge.svg",
   title: "My Experience",
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "I have diverse experience, from website design and team leadership to working as a barista!",
   items: [
     {
       company: "Resilient Health",
@@ -92,7 +92,7 @@ const education = {
   icon: "/assets/resume/cap.svg",
   title: "My Education",
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "I’m a bilingual Computer Science student at the University of Nottingham. After growing up in France, I took a gap year to complete an A level in a subject that was not offered at my school.",
   items: [
     {
       insititution: "University of Nottingham",
@@ -116,7 +116,7 @@ const education = {
 const skills = {
   title: "My Skills",
   description:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "These are my skills, though I’m motivated to keep learning and growing every day.",
   skillList: [
     {
       icon: <FaHtml5 />,
@@ -244,17 +244,19 @@ const Resume = () => {
                     {skills.description}
                   </p>
                 </div>
-                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-[30px]">
+                <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:gap-[30px] gap-4">
                   {skills.skillList.map((skill, index) => {
                     return (
                       <li key={index}>
-                        <TooltipProvider>
+                        <TooltipProvider delayDuration={50}>
                           <Tooltip>
-                            <TooltipTrigger>
-                              <div>{skill.icon}</div>
+                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                              <div className="text-6xl group-hover:text-accent transition-all duration-300">
+                                {skill.icon}
+                              </div>
                             </TooltipTrigger>
                             <TooltipContent>
-                              <p>{skill.name}</p>
+                              <p className="capitalize">{skill.name}</p>
                             </TooltipContent>
                           </Tooltip>
                         </TooltipProvider>
@@ -266,33 +268,25 @@ const Resume = () => {
             </TabsContent>
 
             {/* about */}
-            <TabsContent value="about" className="w-full">
-              <div className="flex flex-col gap-[30px] text-center xl:text-left">
-                <h3 className="text-4xl font-bold">{experience.title}</h3>
+            <TabsContent
+              value="about"
+              className="w-full text-center xl:text-left"
+            >
+              <div className="flex flex-col gap-[30px]">
+                <h3 className="text-4xl font-bold">{about.title}</h3>
                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
-                  {experience.description}
+                  {about.description}
                 </p>
-                <ScrollArea className="h-[400px]">
-                  <ul className="grid grid-cols-1 lg:grid-cols-2 gap-[30px]">
-                    {experience.items.map((item, index) => {
-                      return (
-                        <li
-                          key={index}
-                          className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex flex-col justify-center items-center lg:items-start gap-1"
-                        >
-                          <span className="text-accent">{item.duration}</span>
-                          <h3 className="text-xl max-w[260px] min-h-[60px] text-center lg:text-left">
-                            {item.position}
-                          </h3>
-                          <div className="flex items-center gap-3">
-                            <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
-                            <p className="text-white/60">{item.company}</p>
-                          </div>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </ScrollArea>
+                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0">
+                  {about.info.map((item, index) => {
+                    return (
+                      <li key={index} className="flex items-center justify-center xl:justify-start gap-4">
+                        <span className="text-white/60">{item.fieldName}</span>
+                        <span className="text-xl">{item.fieldValue}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
               </div>
             </TabsContent>
           </div>

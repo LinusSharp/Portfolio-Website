@@ -18,8 +18,9 @@ const Home = () => {
             </h1>
 
             <p className="max-w-[500px] mb-9 text-white/80">
-              I excel at crafting elegant digital experiences and I am
-              proficient in various programming languages and technologies
+              I excel at leading collaborative projects and developing
+              innovative solutions, with a strong foundation in C, Java, and
+              Python.
             </p>
             {/*btn and socials*/}
             <div className="flex flex-col xl:flex-row items-center gap-8">
