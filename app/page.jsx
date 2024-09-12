@@ -19,7 +19,7 @@ const Home = () => {
 
             <p className="max-w-[500px] mb-9 text-white/80">
               I excel at leading collaborative projects and developing
-              innovative solutions, with a strong foundation in C, Java, and
+              innovative solutions, with a foundation in C, Java, and
               Python.
             </p>
             {/*btn and socials*/}
