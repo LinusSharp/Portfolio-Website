@@ -39,6 +39,9 @@ const Contact = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [isSuccess, setIsSuccess] = useState(false); // Track success state
+  const [errorTimeoutId, setErrorTimeoutId] = useState(null); // Track error timeout ID
+  const [successTimeoutId, setSuccessTimeoutId] = useState(null); // Track success timeout ID
 
   const handleChange = (e) => {
     setFormData({
@@ -57,6 +60,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Validate required fields
     const newErrors = {};
     if (!formData.firstname) newErrors.firstname = "First name is required";
     if (!formData.lastname) newErrors.lastname = "Last name is required";
@@ -65,10 +69,23 @@ const Contact = () => {
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      return; 
+      setIsSuccess(false);
+
+      // Clear any previous error timeout
+      if (errorTimeoutId) {
+        clearTimeout(errorTimeoutId);
+      }
+
+      // Set a timeout to remove the error messages after 5 seconds
+      const newErrorTimeoutId = setTimeout(() => {
+        setErrors({});
+      }, 5000);
+      setErrorTimeoutId(newErrorTimeoutId);
+
+      return; // Stop the form submission if there are errors
     }
 
-    setErrors({});
+    setErrors({}); // Clear errors if validation passes
 
     try {
       const response = await fetch("/api/contact", {
@@ -80,7 +97,20 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        alert("Message sent successfully!");
+        setIsSuccess(true); // Show success message
+
+        // Clear any previous success timeout
+        if (successTimeoutId) {
+          clearTimeout(successTimeoutId);
+        }
+
+        // Set a timeout to remove the success message after 5 seconds
+        const newSuccessTimeoutId = setTimeout(() => {
+          setIsSuccess(false);
+        }, 5000);
+        setSuccessTimeoutId(newSuccessTimeoutId);
+
+        // Reset form fields
         setFormData({
           firstname: "",
           lastname: "",
@@ -91,10 +121,12 @@ const Contact = () => {
         });
       } else {
         alert("Error sending message.");
+        setIsSuccess(false);
       }
     } catch (error) {
       console.error("Error:", error);
       alert("An error occurred. Please try again.");
+      setIsSuccess(false);
     }
   };
 
@@ -121,6 +153,20 @@ const Contact = () => {
                 I am highly motivated and always looking for new opportunities.
                 Reach out!
               </p>
+
+              {/* Display success message */}
+              {isSuccess && (
+                <div className="bg-accent text-primary p-4 rounded-md">
+                  <p>Message sent successfully! I will get back to you soon.</p>
+                </div>
+              )}
+
+              {/* Display error message if there are validation errors */}
+              {Object.keys(errors).length > 0 && (
+                <div className="bg-red-500 text-white p-4 rounded-md">
+                  <p>Please fill in the required fields.</p>
+                </div>
+              )}
 
               {/* input fields with validation */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -231,3 +277,6 @@ const Contact = () => {
 };
 
 export default Contact;
+
+
+
