@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Textarea } from "../../components/ui/textarea";
-
 import {
   Select,
   SelectContent,
@@ -13,16 +12,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../components/ui/select";
-
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const info = [
-  {
-    icon: <FaPhoneAlt />,
-    title: "Phone",
-    description: "07763411048",
-  },
   {
     icon: <FaEnvelope />,
     title: "Email",
@@ -45,6 +38,8 @@ const Contact = () => {
     service: "",
   });
 
+  const [errors, setErrors] = useState({});
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -61,6 +56,19 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const newErrors = {};
+    if (!formData.firstname) newErrors.firstname = "First name is required";
+    if (!formData.lastname) newErrors.lastname = "Last name is required";
+    if (!formData.email) newErrors.email = "Email is required";
+    if (!formData.message) newErrors.message = "Message is required";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return; 
+    }
+
+    setErrors({});
 
     try {
       const response = await fetch("/api/contact", {
@@ -114,27 +122,46 @@ const Contact = () => {
                 Reach out!
               </p>
 
-              {/* input */}
+              {/* input fields with validation */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input
-                  name="firstname"
-                  value={formData.firstname}
-                  onChange={handleChange}
-                  placeholder="First Name"
-                />
-                <Input
-                  name="lastname"
-                  value={formData.lastname}
-                  onChange={handleChange}
-                  placeholder="Last Name"
-                />
-                <Input
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Email"
-                />
+                <div>
+                  <Input
+                    name="firstname"
+                    value={formData.firstname}
+                    onChange={handleChange}
+                    placeholder="First Name"
+                  />
+                  {errors.firstname && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.firstname}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <Input
+                    name="lastname"
+                    value={formData.lastname}
+                    onChange={handleChange}
+                    placeholder="Last Name"
+                  />
+                  {errors.lastname && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.lastname}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <Input
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Email"
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                  )}
+                </div>
                 <Input
                   name="phone"
                   value={formData.phone}
@@ -151,7 +178,9 @@ const Contact = () => {
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="Web Development">Web Development</SelectItem>
+                    <SelectItem value="Web Development">
+                      Web Development
+                    </SelectItem>
                     <SelectItem value="Web Design">Web Design</SelectItem>
                     <SelectItem value="Contact">General Inquiry</SelectItem>
                   </SelectGroup>
@@ -159,15 +188,20 @@ const Contact = () => {
               </Select>
 
               {/* textarea */}
-              <Textarea
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                className="h-[200px]"
-                placeholder="Type your message here"
-              />
+              <div>
+                <Textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="h-[200px]"
+                  placeholder="Type your message here"
+                />
+                {errors.message && (
+                  <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                )}
+              </div>
 
-              {/* Button */}
+              {/* submit button */}
               <Button size="md" className="max-w-40" type="submit">
                 Send message
               </Button>

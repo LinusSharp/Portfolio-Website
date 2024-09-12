@@ -10,7 +10,7 @@ const services = [
     num: "01",
     title: "Web Development",
     description:
-      "I have a strong background in web development, with extensive experience in languages like C, Java, and Python. I've worked on a variety of projects, including full-stack development for my personal portfolio and the UNiDAYS-sponsored app project.",
+      "I have a strong background in web development, with extensive experience in React, Next.js, HTML & CSS. I have worked on a variety of projects, including full-stack development for my personal portfolio and the UNiDAYS-sponsored app project.",
     href: "",
   },
   {

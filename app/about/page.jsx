@@ -34,16 +34,8 @@ const about = {
       fieldValue: "linuscolesharp@gmail.com",
     },
     {
-      fieldName: "Experience",
-      fieldValue: "3 years",
-    },
-    {
       fieldName: "Nationnality",
       fieldValue: "British & French",
-    },
-    {
-      fieldName: "Freelance",
-      fieldValue: "Available",
     },
     {
       fieldName: "Languages",
