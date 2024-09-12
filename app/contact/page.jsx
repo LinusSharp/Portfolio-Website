@@ -60,7 +60,6 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate required fields
     const newErrors = {};
     if (!formData.firstname) newErrors.firstname = "First name is required";
     if (!formData.lastname) newErrors.lastname = "Last name is required";
@@ -71,21 +70,19 @@ const Contact = () => {
       setErrors(newErrors);
       setIsSuccess(false);
 
-      // Clear any previous error timeout
       if (errorTimeoutId) {
         clearTimeout(errorTimeoutId);
       }
 
-      // Set a timeout to remove the error messages after 5 seconds
       const newErrorTimeoutId = setTimeout(() => {
         setErrors({});
       }, 5000);
       setErrorTimeoutId(newErrorTimeoutId);
 
-      return; // Stop the form submission if there are errors
+      return;
     }
 
-    setErrors({}); // Clear errors if validation passes
+    setErrors({}); 
 
     try {
       const response = await fetch("/api/contact", {
@@ -97,14 +94,12 @@ const Contact = () => {
       });
 
       if (response.ok) {
-        setIsSuccess(true); // Show success message
+        setIsSuccess(true);
 
-        // Clear any previous success timeout
         if (successTimeoutId) {
           clearTimeout(successTimeoutId);
         }
 
-        // Set a timeout to remove the success message after 5 seconds
         const newSuccessTimeoutId = setTimeout(() => {
           setIsSuccess(false);
         }, 5000);
