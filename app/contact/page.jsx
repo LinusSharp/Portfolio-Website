@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Textarea } from "../../components/ui/textarea";
@@ -26,16 +26,70 @@ const info = [
   {
     icon: <FaEnvelope />,
     title: "Email",
-    description: "linuscolesharp@gmailcom",
+    description: "linuscolesharp@gmail.com",
   },
   {
     icon: <FaMapMarkerAlt />,
-    title: "Address",
-    description: "Code Corne, Funky town, SW3 HT6",
+    title: "Location",
+    description: "Nottingham",
   },
 ];
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    phone: "",
+    message: "",
+    service: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleServiceChange = (value) => {
+    setFormData({
+      ...formData,
+      service: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        alert("Message sent successfully!");
+        setFormData({
+          firstname: "",
+          lastname: "",
+          email: "",
+          phone: "",
+          message: "",
+          service: "",
+        });
+      } else {
+        alert("Error sending message.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred. Please try again.");
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -47,51 +101,83 @@ const Contact = () => {
     >
       <div className="container mx-auto">
         <div className="flex flex-col xl:flex-row gap-[30px]">
-
           {/* form */}
           <div className="xl:w-[54%] order-2 xl:order-none">
-            <form className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl">
-              <h3 className="text-4xl text-accent">Lets work together</h3>
+            <form
+              className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
+              onSubmit={handleSubmit}
+            >
+              <h3 className="text-4xl text-accent">Let's work together</h3>
               <p className="text-white/60">
-                I am highly motivated and always looking for new oportunities. I
-                have lots of experience so reach out!
+                I am highly motivated and always looking for new opportunities.
+                Reach out!
               </p>
 
               {/* input */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type="firstname" placeholder="First Name" />
-                <Input type="lastname" placeholder="Last Name" />
-                <Input type="email" placeholder="Email" />
-                <Input type="phone" placeholder="Phone Number" />
+                <Input
+                  name="firstname"
+                  value={formData.firstname}
+                  onChange={handleChange}
+                  placeholder="First Name"
+                />
+                <Input
+                  name="lastname"
+                  value={formData.lastname}
+                  onChange={handleChange}
+                  placeholder="Last Name"
+                />
+                <Input
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Email"
+                />
+                <Input
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Phone Number"
+                />
               </div>
 
               {/* select */}
-              <Select>
+              <Select onValueChange={handleServiceChange}>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Select a service</SelectLabel>
-                    <SelectItem value="est">Web Development</SelectItem>
-                    <SelectItem value="cst">Web Design</SelectItem>
-                    <SelectItem value="mst">Contact</SelectItem>
+                    <SelectItem value="Web Development">Web Development</SelectItem>
+                    <SelectItem value="Web Design">Web Design</SelectItem>
+                    <SelectItem value="Contact">General Inquiry</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
 
-              {/* text area */}
-              <Textarea className="h-[200px]" placeholder="Type your message here" />
+              {/* textarea */}
+              <Textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                className="h-[200px]"
+                placeholder="Type your message here"
+              />
 
               {/* Button */}
-              <Button size="md" className="max-w-40">Send message</Button>
+              <Button size="md" className="max-w-40" type="submit">
+                Send message
+              </Button>
             </form>
           </div>
+
           {/* info */}
           <div className="flex-1 flex items-center xl:justify-end order-1 xl:order-none mb-8 xl:mb-0">
             <ul className="flex flex-col gap-10">
-              {info.map((item, index) => {
-                return <li key={index} className="flex items-center gap-6">
+              {info.map((item, index) => (
+                <li key={index} className="flex items-center gap-6">
                   <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-accent rounded-md flex items-center justify-center">
                     <div className="text-[28px]">{item.icon}</div>
                   </div>
@@ -100,7 +186,7 @@ const Contact = () => {
                     <h3 className="text-xl">{item.description}</h3>
                   </div>
                 </li>
-              })}
+              ))}
             </ul>
           </div>
         </div>
