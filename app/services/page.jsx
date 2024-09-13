@@ -10,31 +10,32 @@ const services = [
     num: "01",
     title: "Web Development",
     description:
-      "I have a strong background in web development, with extensive experience in React, Next.js, HTML & CSS. I have worked on a variety of projects, including full-stack development for my personal portfolio and the UNiDAYS-sponsored app project.",
+      "With expertise in web development using React, Next.js, and Tailwind CSS, I’ve built full-stack applications, including my personal portfolio and collaborative projects for clients like UNiDAYS.",
     href: "",
   },
   {
     num: "02",
     title: "UI/UX Design",
     description:
-      "In addition to my coding abilities, I am interested in creating intuitive and user-friendly interfaces. My focus is on ensuring seamless user experiences, drawing from my project management work where I balanced client requirements with technical execution.",
+      "I combine design principles with technical expertise to create user-centric interfaces. My experience in project management ensures a focus on seamless and intuitive user experiences in all of my work.",
     href: "",
   },
   {
     num: "03",
-    title: "API creation",
+    title: "API Creation",
     description:
-      "Through my work in computer science, I have developed strong skills in API design and implementation. I am proficient in building scalable APIs that effectively communicate between the front-end and back-end systems.",
+      "My skills in API development enable me to design and implement scalable, efficient systems. I focus on ensuring smooth communication between front-end and back-end, ensuring robust application performance.",
     href: "",
   },
   {
     num: "04",
     title: "Project Leadership",
     description:
-      "As the team leader of a UNiDAYS-sponsored project, I managed a group of software engineers to deliver a high-quality app. This role helped me refine my leadership and communication skills.",
+      "Leading the UNiDAYS-sponsored project, I managed a team of developers to deliver a high-quality application, refining my skills in leadership, communication, and cross-functional collaboration.",
     href: "",
   },
 ];
+
 
 const Services = () => {
   return (
