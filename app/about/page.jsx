@@ -240,9 +240,20 @@ const Resume = () => {
                   {skills.skillList.map((skill, index) => {
                     return (
                       <li key={index}>
+                        {/* Mobile and tablet view: Show icon and name */}
+                        <div className="w-full h-[150px] bg-[#232329] rounded-xl flex flex-col justify-center items-center gap-2 group sm:flex md:flex lg:hidden">
+                          <div className="text-6xl group-hover:text-accent">
+                            {skill.icon}
+                          </div>
+                          <div className="text-xl capitalize group-hover:text-accent">
+                            {skill.name}
+                          </div>
+                        </div>
+
+                        {/* Desktop view: Show icon and name with tooltip on hover */}
                         <TooltipProvider delayDuration={50}>
                           <Tooltip>
-                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group hidden sm:hidden md:hidden lg:flex">
                               <div className="text-6xl group-hover:text-accent transition-all duration-300">
                                 {skill.icon}
                               </div>
