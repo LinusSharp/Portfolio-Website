@@ -19,10 +19,11 @@ export async function POST(req) {
       from: `"${firstname} ${lastname}" <${email}>`,
       to: 'linuscolesharp@gmail.com',
       subject: `Contact Request from ${firstname} ${lastname}`,
-      text: `Service: ${service}\nPhone: ${phone}\nMessage: ${message}`,
+      text: `Service: ${service}\nPhone: ${phone}\nEmail: ${email}\nMessage: ${message}`,
       html: `
         <p><strong>Service:</strong> ${service}</p>
         <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Email:</strong> ${email}</p>
         <p><strong>Message:</strong></p>
         <p>${message}</p>
       `, // HTML body
