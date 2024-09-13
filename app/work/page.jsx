@@ -22,10 +22,10 @@ const projects = [
     category: "frontend",
     title: "Reverse Captcha",
     descripton:
-      "THis is going to be my unidays project, i was team leader, it was very insightfull this is just a polace holder for now. I lead the team",
+      "Led a UNiDAYS-sponsored project, Reverse Captcha, where I managed a team of developers to create a novel approach to CAPTCHA validation. My role involved overseeing the full development lifecycle using Flutter and Dart, with backend support from Python.",
     stack: [{ name: "Flutter" }, { name: "Dart" }, { name: "Python" }],
     image: "/assets/work/thumb1.png",
-    github: "",
+    github: "https://projects.cs.nott.ac.uk/comp2002/2023-2024/team35_project",
     live: "",
   },
   {
@@ -33,7 +33,7 @@ const projects = [
     category: "frontend",
     title: "Website Design",
     descripton:
-      "I worked for resilient health, i overhalled their website to allow for better SEO, and better usablity",
+      "Redesigned the website for Resilient Health to improve user experience and SEO performance. The overhaul included UI/UX improvements using Figma, and seamless integration into WordPress for scalability and content management.",
     stack: [{ name: "Figma" }, { name: "wordpress" }],
     image: "/assets/work/thumb2.png",
     github: "",
@@ -44,11 +44,11 @@ const projects = [
     category: "frontend",
     title: "Portfolio Website",
     descripton:
-      "This is the portfolio website, you are currently on the page for it, i hope you like it",
+      "Developed my personal portfolio website from scratch using Next.js and Tailwind CSS. The site showcases my skills, projects, and experience while leveraging AWS for secure and scalable hosting.",
     stack: [{ name: "Next.js" }, { name: "AWS" }, { name: "Tailwind.css" }],
     image: "/assets/work/thumb3.png",
-    github: "",
-    live: "",
+    github: "https://github.com/playhavoc/website",
+    live: "https://linus-sharp.co.uk/",
   },
 ];
 
