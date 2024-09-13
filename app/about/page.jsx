@@ -23,7 +23,7 @@ import { ScrollArea } from "../../components/ui/scroll-area";
 const about = {
   title: "About me",
   description:
-    "I’m a bilingual Computer Science student at the University of Nottingham, passionate about technology and innovation.",
+    "A highly motivated Computer Science student at the University of Nottingham with a passion for AI-driven solutions, technology, and innovation. Skilled in predictive analytics and project leadership.",
   info: [
     {
       fieldName: "Name",
@@ -49,7 +49,7 @@ const experience = {
   icon: "/assets/resume/badge.svg",
   title: "My Experience",
   description:
-    "I have diverse experience, from website design and team leadership to working as a barista!",
+    "Experience ranges from web development and design to team leadership in collaborative projects. Expertise in API development and management, and practical exposure in various service roles.",
   items: [
     {
       company: "Resilient Health",
@@ -84,7 +84,7 @@ const education = {
   icon: "/assets/resume/cap.svg",
   title: "My Education",
   description:
-    "I’m a bilingual Computer Science student at the University of Nottingham. After growing up in France, I took a gap year to complete an A level in a subject that was not offered at my school.",
+    "Pursuing a BSc in Computer Science at the University of Nottingham, with a focus on artificial intelligence, predictive analytics, and software development. Background includes completing an A level during my gap year to learn more about the subject .",
   items: [
     {
       insititution: "University of Nottingham",
@@ -108,7 +108,7 @@ const education = {
 const skills = {
   title: "My Skills",
   description:
-    "These are my skills, though I’m motivated to keep learning and growing every day.",
+    "I have a diverse skill set spanning front-end development, UI/UX design, and backend systems, with a continuous drive to expand my expertise in emerging technologies.",
   skillList: [
     {
       icon: <FaHtml5 />,
