@@ -11,27 +11,34 @@ const Home = () => {
         <div className="flex flex-col xl:flex-row items-center justify-between xl:pt-8 xl:pb-24">
           {/*text*/}
           <div className="text-center xl:text-left order-2 xl:order-none">
-            <span className="text-xl">Software Developer</span>
+            <span className="text-xl">
+              Aspiring Software Engineer & Project Leader
+            </span>
             <h1 className="h1">
               Hello I&apos;m <br />{" "}
               <span className="text-accent">Linus Sharp</span>
             </h1>
 
             <p className="max-w-[500px] mb-9 text-white/80">
-              I excel at leading collaborative projects and developing
-              innovative solutions, with a foundation in C, Java, and
-              Python.
+              A Computer Science student at the University of Nottingham with
+              expertise in Python, JavaScript, React, and AWS. I lead
+              cross-functional teams to deliver innovative software solutions.
             </p>
             {/*btn and socials*/}
             <div className="flex flex-col xl:flex-row items-center gap-8">
-              <Button
-                variant="outline"
-                size="lg"
-                className="uppercase flex items-center gap-2"
+              <a
+                href="/My CV - CompSci.pdf" // path to your PDF file in the public folder
+                download="My CV - CompSci.pdf" // download attribute triggers the download
               >
-                <span>Download CV</span>
-                <FiDownload className="text-xl" />
-              </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="uppercase flex items-center gap-2"
+                >
+                  <span>Download CV</span>
+                  <FiDownload className="text-xl" />
+                </Button>
+              </a>
               <div className="mb-8 xl:mb-0">
                 <Socials
                   containerStyles="flex gap-6"

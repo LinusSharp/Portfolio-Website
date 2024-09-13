@@ -23,7 +23,7 @@ import { ScrollArea } from "../../components/ui/scroll-area";
 const about = {
   title: "About me",
   description:
-    "I’m a bilingual Computer Science student at the University of Nottingham, passionate about technology and innovation.",
+    "A highly motivated Computer Science student at the University of Nottingham with a passion for AI-driven solutions, technology, and innovation. Skilled in predictive analytics and project leadership.",
   info: [
     {
       fieldName: "Name",
@@ -49,7 +49,7 @@ const experience = {
   icon: "/assets/resume/badge.svg",
   title: "My Experience",
   description:
-    "I have diverse experience, from website design and team leadership to working as a barista!",
+    "Experience ranges from web development and design to team leadership in collaborative projects. Expertise in API development and management, and practical exposure in various service roles.",
   items: [
     {
       company: "Resilient Health",
@@ -84,7 +84,7 @@ const education = {
   icon: "/assets/resume/cap.svg",
   title: "My Education",
   description:
-    "I’m a bilingual Computer Science student at the University of Nottingham. After growing up in France, I took a gap year to complete an A level in a subject that was not offered at my school.",
+    "Pursuing a BSc in Computer Science at the University of Nottingham, with a focus on artificial intelligence, predictive analytics, and software development. Background includes completing an A level during my gap year to learn more about the subject .",
   items: [
     {
       insititution: "University of Nottingham",
@@ -108,7 +108,7 @@ const education = {
 const skills = {
   title: "My Skills",
   description:
-    "These are my skills, though I’m motivated to keep learning and growing every day.",
+    "I have a diverse skill set spanning front-end development, UI/UX design, and backend systems, with a continuous drive to expand my expertise in emerging technologies.",
   skillList: [
     {
       icon: <FaHtml5 />,
@@ -240,9 +240,20 @@ const Resume = () => {
                   {skills.skillList.map((skill, index) => {
                     return (
                       <li key={index}>
+                        {/* Mobile and tablet view: Show icon and name */}
+                        <div className="w-full h-[150px] bg-[#232329] rounded-xl flex flex-col justify-center items-center gap-2 group sm:flex md:flex lg:hidden">
+                          <div className="text-6xl group-hover:text-accent">
+                            {skill.icon}
+                          </div>
+                          <div className="text-xl capitalize group-hover:text-accent">
+                            {skill.name}
+                          </div>
+                        </div>
+
+                        {/* Desktop view: Show icon and name with tooltip on hover */}
                         <TooltipProvider delayDuration={50}>
                           <Tooltip>
-                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group">
+                            <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group hidden sm:hidden md:hidden lg:flex">
                               <div className="text-6xl group-hover:text-accent transition-all duration-300">
                                 {skill.icon}
                               </div>
@@ -264,21 +275,31 @@ const Resume = () => {
               value="about"
               className="w-full text-center xl:text-left"
             >
-              <div className="flex flex-col gap-[30px]">
+              <div className="flex flex-col gap-[20px]">
                 <h3 className="text-4xl font-bold">{about.title}</h3>
                 <p className="max-w-[600px] text-white/60 mx-auto xl:mx-0">
                   {about.description}
                 </p>
-                <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 max-w-[620px] mx-auto xl:mx-0">
-                  {about.info.map((item, index) => {
-                    return (
-                      <li key={index} className="flex items-center justify-center xl:justify-start gap-4">
-                        <span className="text-white/60">{item.fieldName}</span>
-                        <span className="text-xl">{item.fieldValue}</span>
-                      </li>
-                    );
-                  })}
-                </ul>
+
+                <div className="bg-[#1e1e24] p-8 rounded-xl shadow-lg max-w-[1020px] mx-auto xl:mx-0">
+                  <ul className="grid grid-cols-1 xl:grid-cols-2 gap-y-6 gap-x-5">
+                    {about.info.map((item, index) => {
+                      return (
+                        <li
+                          key={index}
+                          className="flex justify-start gap-1 text-lg"
+                        >
+                          <span className="text-white/60 font-semibold">
+                            {item.fieldName}:
+                          </span>
+                          <span className="font-bold text-accent text-right">
+                            {item.fieldValue}
+                          </span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
               </div>
             </TabsContent>
           </div>

@@ -142,7 +142,7 @@ const Contact = () => {
               className="flex flex-col gap-6 p-10 bg-[#27272c] rounded-xl"
               onSubmit={handleSubmit}
             >
-              <h3 className="text-4xl text-accent">Let&#39;s work together</h3>
+              <h3 className="text-4xl text-accent">Get in touch!</h3>
 
               <p className="text-white/60">
                 I am highly motivated and always looking for new opportunities.
