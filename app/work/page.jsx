@@ -19,6 +19,22 @@ import WorkSliderBtns from "../../components/WorkSliderBtns";
 const projects = [
   {
     num: "01",
+    category: "full-stack",
+    title: "Pintly Intern",
+    descripton:
+      "Contributed as a Software Engineering Intern at Pintly (Jan–Jun 2025), leading the transition from a legacy ASP.NET MVC monolith to a decoupled architecture powered by a Next.js frontend and an ASP.NET Core Web API backend. Refactored backend logic, developed RESTful APIs in C#, and optimised database migrations to improve performance and scalability.",
+    stack: [
+      { name: "Next.js" },
+      { name: "ASP.NET Core" },
+      { name: "C#" },
+      { name: "React.js" },
+    ],
+    image: "/assets/work/pintly.png",
+    github: "",
+    live: "",
+  },
+  {
+    num: "02",
     category: "frontend",
     title: "Reverse Captcha",
     descripton:
@@ -29,23 +45,23 @@ const projects = [
     live: "",
   },
   {
-    num: "02",
+    num: "03",
     category: "frontend",
     title: "Website Design",
     descripton:
       "Redesigned the website for Resilient Health to improve user experience and SEO performance. The overhaul included UI/UX improvements using Figma, and seamless integration into WordPress for scalability and content management.",
-    stack: [{ name: "Figma" }, { name: "wordpress" }],
+    stack: [{ name: "Figma" }, { name: "WordPress" }],
     image: "/assets/work/thumb2.png",
     github: "",
     live: "",
   },
   {
-    num: "03",
+    num: "04",
     category: "frontend",
     title: "Portfolio Website",
     descripton:
       "Developed my personal portfolio website from scratch using Next.js and Tailwind CSS. The site showcases my skills, projects, and experience while leveraging AWS for secure and scalable hosting.",
-    stack: [{ name: "Next.js" }, { name: "AWS" }, { name: "Tailwind.css" }],
+    stack: [{ name: "Next.js" }, { name: "AWS" }, { name: "Tailwind CSS" }],
     image: "/assets/work/thumb3.png",
     github: "https://github.com/playhavoc/website",
     live: "https://linus-sharp.co.uk/",
@@ -105,7 +121,7 @@ const Work = () => {
               <div className="flex items-center gap-4">
                 {/* live project button */}
                 {project.live && (
-                  <Link href={project.live}>
+                  <Link href={project.live} target="_blank">
                     <TooltipProvider delayDuration={50}>
                       <Tooltip>
                         <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
@@ -121,7 +137,7 @@ const Work = () => {
 
                 {/* github project button */}
                 {project.github && (
-                  <Link href={project.github}>
+                  <Link href={project.github} target="_blank">
                     <TooltipProvider delayDuration={50}>
                       <Tooltip>
                         <TooltipTrigger className="w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group">
@@ -158,7 +174,7 @@ const Work = () => {
                           src={project.image}
                           fill
                           className="object-cover"
-                          alt=""
+                          alt={project.title}
                         />
                       </div>
                     </div>
@@ -166,7 +182,6 @@ const Work = () => {
                 );
               })}
 
-              {/* SLider buttons */}
               <WorkSliderBtns
                 containerStyles="flex gap-2 absolute right-0 bottom-[calc(50%_-_22px)] xl:bottom-0 z-20 w-full justify-between xl:w-max xl:justify-none"
                 btnStyles="bg-accent hover:bg-accent-hover text-primary text-[22px] w-[44px] h-[44px] flex justify-center items-center transition-all rounded-md"
