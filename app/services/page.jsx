@@ -16,7 +16,7 @@ const services = [
     num: "02",
     title: "Product Management",
     description:
-      "At Pintly, I independently led the migration from a legacy ASP.NET MVC architecture to a decoupled system using Next.js and ASP.NET Core Web API. I scoped and prioritised features based on technical impact and business value, regularly aligning with the company’s business lead to ensure roadmap decisions met user and stakeholder needs.",
+      "At Pintly, I independently led the migration from a legacy ASP.NET MVC architecture to a decoupled system using Next.js and ASP.NET Core Web API. I scoped and prioritised features based on technical impact and business value, to ensure decisions met user and stakeholder needs.",
     href: "",
   },
   {
