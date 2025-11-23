@@ -241,7 +241,7 @@ const Resume = () => {
                       {/* Desktop: tooltip */}
                       <TooltipProvider delayDuration={50}>
                         <Tooltip>
-                          <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group hidden sm:hidden md:hidden lg:flex">
+                          <TooltipTrigger className="w-full h-[150px] bg-[#232329] rounded-xl flex justify-center items-center group sm:hidden md:hidden lg:flex">
                             <div className="text-6xl group-hover:text-accent transition-all duration-300">
                               {skill.icon}
                             </div>
