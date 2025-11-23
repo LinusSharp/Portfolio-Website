@@ -164,7 +164,7 @@ const PrivacyPolicy = () => {
               href="mailto:support@slumberleague.app"
               className={`inline-block mt-4 text-xl font-semibold ${theme.accent} hover:underline`}
             >
-              support@slumberleague.app
+              linus.sharp@gmail.com
             </a>
           </Section>
         </div>
