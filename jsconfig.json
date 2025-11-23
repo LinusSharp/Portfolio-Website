@@ -3,8 +3,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
-    },
-    "ignoreDeprecations": "6.0"
+    }
   },
   "include": ["**/*.js", "**/*.jsx", "next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }
