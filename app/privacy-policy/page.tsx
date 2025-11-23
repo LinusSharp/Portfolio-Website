@@ -1,16 +1,21 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 
+// 1. Define the props interface for the helper component
+interface SectionProps {
+  title: string;
+  children: React.ReactNode;
+}
+
 const PrivacyPolicy = () => {
-  // We keep the text/accent colors consistent with the App's theme (Cyan/Blue)
-  // But we let the background inherit from your portfolio's global CSS
   const theme = {
     text: "text-slate-300",
     heading: "text-white",
-    accent: "text-[#22D3EE]", // Cyan-400 (Matches App Theme)
-    surface: "bg-[#27272c]", // Slightly lighter than background for cards
+    accent: "text-[#22D3EE]",
+    surface: "bg-[#27272c]",
     border: "border-slate-700",
   };
 
@@ -51,7 +56,7 @@ const PrivacyPolicy = () => {
             </p>
           </Section>
 
-          {/* 2. Apple HealthKit Data (Crucial for Apple Approval) */}
+          {/* 2. Apple HealthKit Data */}
           <Section title="2. Apple HealthKit Data">
             <div
               className={`p-6 rounded-xl border ${theme.border} ${theme.surface} mb-6`}
@@ -78,7 +83,7 @@ const PrivacyPolicy = () => {
             </p>
           </Section>
 
-          {/* 3. Social Features & Public Data */}
+          {/* 3. Social Features */}
           <Section title="3. Leaderboards, Clans & Social Sharing">
             <p>
               SlumberLeague is a social experience. By using the app, you
@@ -102,7 +107,7 @@ const PrivacyPolicy = () => {
             </p>
           </Section>
 
-          {/* 4. Data Collection & Usage */}
+          {/* 4. Usage */}
           <Section title="4. How We Use Your Data">
             <p>
               We use the data we collect for the following specific purposes:
@@ -118,7 +123,7 @@ const PrivacyPolicy = () => {
             </ul>
           </Section>
 
-          {/* 5. Data Storage & Security */}
+          {/* 5. Security */}
           <Section title="5. Data Storage & Security">
             <p>
               Your account information and game statistics are stored securely
@@ -131,7 +136,7 @@ const PrivacyPolicy = () => {
             </p>
           </Section>
 
-          {/* 6. Your Rights */}
+          {/* 6. Rights */}
           <Section title="6. Your Rights & Account Deletion">
             <p>You have full control over your data:</p>
             <ul className="list-disc pl-5 mt-2 space-y-2">
@@ -175,8 +180,8 @@ const PrivacyPolicy = () => {
   );
 };
 
-// Helper Component for consistency
-const Section = ({ title, children }) => (
+// 2. Apply the interface to the component props
+const Section = ({ title, children }: SectionProps) => (
   <div className="mb-8">
     <h2 className="text-2xl font-semibold text-white mb-4">{title}</h2>
     <div className="text-slate-300 leading-relaxed text-base md:text-lg">
